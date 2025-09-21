@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Second Highest</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <script>
+    function secondHighest() {
+      // Read number of elements
+      let n = Number(prompt("Enter number of elements:"));
+      let arr = [];
 
+      for (let i = 0; i < n; i++) {
+        arr.push(Number(prompt("Enter element:")));
+      }
+
+      if (arr.length < 2) {
+        alert(-Infinity);
+        return;
+      }
+
+      let max = -Infinity;
+      let secondMax = -Infinity;
+
+      for (let num of arr) {
+        if (num > max) {
+          secondMax = max;
+          max = num;
+        } else if (num > secondMax && num < max) {
+          secondMax = num;
+        }
+      }
+
+      alert(secondMax === -Infinity ? -Infinity : secondMax);
+    }
+
+    // Run automatically
+    secondHighest();
+  </script>
 </body>
-
 </html>
+
