@@ -6,37 +6,6 @@
 </head>
 <body>
   <script>
-    function secondHighest() {
-      // Read number of elements
-      let n = Number(prompt("Enter number of elements:"));
-      let arr = [];
-
-      for (let i = 0; i < n; i++) {
-        arr.push(Number(prompt("Enter element:")));
-      }
-
-      if (arr.length < 2) {
-        alert(-Infinity);
-        return;
-      }
-
-      let max = -Infinity;
-      let secondMax = -Infinity;
-
-      for (let num of arr) {
-        if (num > max) {
-          secondMax = max;
-          max = num;
-        } else if (num > secondMax && num < max) {
-          secondMax = num;
-        }
-      }
-
-      alert(secondMax === -Infinity ? -Infinity : secondMax);
-    }
-
-    // Run automatically
-    secondHighest();
   </script>
 </body>
 </html>
