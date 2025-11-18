@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Second Highest</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Cost Ropes</title>
 </head>
 <body>
-  <script>
-  </script>
+
+    <h2>Min Cost to Connect Ropes</h2>
+
+    <label>Enter rope lengths (comma-separated):</label>
+    <input type="text" id="ropes" placeholder="e.g. 4,3,2,6" />
+
+    <button onclick="solve()">Compute Min Cost</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function mincost(arr) {
+            if (arr.length <= 1) return 0;
+
+            let totalCost = 0;
+
+            while (arr.length > 1) {
+                // Sort to pick the two smallest ropes
+                arr.sort((a, b) => a - b);
+
+                let first = arr.shift();
+                let second = arr.shift();
+
+                let cost = first + second;
+                totalCost += cost;
+
+                arr.push(cost); // Add combined rope back
+            }
+
+            return totalCost;
+        }
+
+        function solve() {
+            let input = document.getElementById("ropes").value;
+
+            // Convert comma-separated values into numbers
+            let arr = input.split(",").map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+
+            let ans = mincost(arr);
+
+            document.getElementById("result").textContent = "Minimum Cost: " + ans;
+        }
+    </script>
+
 </body>
 </html>
+
 

@@ -1,28 +1,28 @@
 function mincost(arr) {
-  // If there is only one rope, no cost needed
-  if (arr.length <= 1) return 0;
+    if (arr.length <= 1) return 0;
 
-  let cost = 0;
+    let totalCost = 0;
 
-  // Keep combining ropes until one rope remains
-  while (arr.length > 1) {
-    // Sort to get the two smallest ropes
-    arr.sort((a, b) => a - b);
+    // Continue until only one rope remains
+    while (arr.length > 1) {
+        // Sort so the two smallest are at the start
+        arr.sort((a, b) => a - b);
 
-    // Take the two smallest
-    const first = arr.shift();
-    const second = arr.shift();
+        // Take the two smallest ropes
+        let first = arr.shift();
+        let second = arr.shift();
 
-    // Cost of connecting them
-    const newRope = first + second;
-    cost += newRope;
+        // Cost to connect them
+        let cost = first + second;
+        totalCost += cost;
 
-    // Insert the new rope back
-    arr.push(newRope);
-  }
+        // Push the combined rope back
+        arr.push(cost);
+    }
 
-  return cost;
+    return totalCost;
 }
+
 
 
 
